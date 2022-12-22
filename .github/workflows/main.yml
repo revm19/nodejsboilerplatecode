@@ -1,0 +1,10 @@
+name: Sample Jenkins Action on: [push]
+jobs: build:
+runs-on: self-hosted steps:
+# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+# - uses: actions/checkout@v2
+- id: sampleaction
+uses: revm19/nodejsboilerplatecode.git@master with:
+jenkins-username: ${{ accessing jenkins
+jenkins-pat: ${{ secrets.JENKINS_PAT }} # personal Access token for accessing Jenkins
+poll-time: 10 # how often to poll the jenkins server for results timeout-value: 600 # How long to poll before timing out the action verbose: true # true/false - turns on extra logging
