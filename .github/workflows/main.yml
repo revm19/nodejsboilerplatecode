@@ -7,4 +7,4 @@ runs-on: self-hosted steps:
 uses: revm19/nodejsboilerplatecode.git@master with:
 jenkins-username: ${{ accessing jenkins
 jenkins-pat: ${{ secrets.JENKINS_PAT }} # personal Access token for accessing Jenkins
-poll-time: 10 # how often to poll the jenkins server for results timeout-value: 600 # How long to poll before timing out the action verbose: true # true/false - turns on extra logging
+poll-time: 60 # how often to poll the jenkins server for results timeout-value: 600 # How long to poll before timing out the action verbose: true # true/false - turns on extra logging
