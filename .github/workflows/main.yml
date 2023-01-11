@@ -1,10 +1,25 @@
-name: Sample Jenkins Action on: [push]
-jobs: build:
-runs-on: self-hosted steps:
-# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-# - uses: actions/checkout@v2
-- id: sampleaction
-uses: revm19/nodejsboilerplatecode.git@master with:
-jenkins-username: ${{ accessing jenkins
-jenkins-pat: ${{ secrets.JENKINS_PAT }} # personal Access token for accessing Jenkins
-poll-time: 60 # how often to poll the jenkins server for results timeout-value: 600 # How long to poll before timing out the action verbose: true # true/false - turns on extra logging
+on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request. 
+  push:
+    branches:
+      - master
+  pull_request:
+      types: [opened, synchronize, reopened]
+
+name: SonarQube Scan
+jobs:
+  sonarqube:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checking out
+      uses: actions/checkout@master
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@v1.2.0
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONARQUBE_TOKEN }}
