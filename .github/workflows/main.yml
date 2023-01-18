@@ -8,7 +8,7 @@ jobs:
         uses: hashicorp/vault-action@v2
         with:
             url: http://10.20.2.174:8200
-            token: ${{ secrets.TOKENS }}
+            token: ${{ secrets.TOKEN }}
             tlsSkipVerify: true
             secrets: |
               secret/data/data/ci SONARQUBE_HOST | SONARQUBE_HOST ;
