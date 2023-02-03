@@ -11,8 +11,8 @@ jobs:
             token: ${{ secrets.TOKEN }}
             tlsSkipVerify: true
             secrets: |
-              secret/data/data/ci SONARQUBE_HOST | SONARQUBE_HOST ;
-              secret/data/data/ci SONARQUBE_TOKEN | SONARQUBE_TOKEN
+              secret/data/ci SONARQUBE_HOST | SONARQUBE_HOST ;
+              secret/data/ci SONARQUBE_TOKEN | SONARQUBE_TOKEN
       - name: Checking out
         uses: actions/checkout@master
         with:
